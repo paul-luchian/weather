@@ -13,7 +13,7 @@ import {LocationService} from "../../shared/services/location/location.service";
 import {WeatherService} from "../../shared/services/weather/weather.service";
 import {NotificationService} from "../../shared/services/notification/notification.service";
 import {JsonPipe, NgIf} from "@angular/common";
-import {DashboardViewModel} from "./components/dashboard.models";
+import {DashboardViewModel} from "./dashboard.models";
 
 @Component({
   selector: 'app-dashboard',

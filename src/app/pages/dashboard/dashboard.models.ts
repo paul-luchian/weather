@@ -1,7 +1,7 @@
-import {WeatherForecast} from "../../../shared/services/weather/weather.models";
-import {mapWeatherTypeTranslation, WeatherType} from "../../../shared/models/weather.models";
-import {WeatherUtils} from "../../../shared/utils/weather.utils";
-import {LocationDetails} from "../../../shared/services/location/location.models";
+import {WeatherForecast} from "../../shared/services/weather/weather.models";
+import {mapWeatherTypeTranslation, WeatherType} from "../../shared/models/weather.models";
+import {WeatherUtils} from "../../shared/utils/weather.utils";
+import {LocationDetails} from "../../shared/services/location/location.models";
 
 export class DashboardViewModel {
   location: string;
