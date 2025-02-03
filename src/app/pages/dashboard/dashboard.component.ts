@@ -70,7 +70,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
             )
         ),
         switchMap((locationDetails) =>
-          this.#weatherService.getForecast(locationDetails!.lat, locationDetails!.lon)
+          this.#weatherService.getForecast(locationDetails!.latitude, locationDetails!.longitude)
             .pipe(
               tap((weatherForecast) => {
                 this.weatherData = new DashboardViewModel(locationDetails!, weatherForecast);
