@@ -10,12 +10,12 @@ export class DashboardViewModel {
   humidity: string;
   windSpeed: string;
 
-  constructor(locationDetails: LocationDetails, weatherForecast: WeatherForecast) {
-    this.location = locationDetails.displayName;
-    this.weather = this.buildWeatherString(weatherForecast.type);
-    this.temperature = `${weatherForecast.temperature} ${weatherForecast.temperatureUnit}`;
-    this.humidity = `${weatherForecast.humidity} ${weatherForecast.humidityUnit}`;
-    this.windSpeed = `${weatherForecast.windSpeed} ${weatherForecast.windSpeedUnit}`;
+  constructor(locationDetails?: LocationDetails, weatherForecast?: WeatherForecast) {
+    this.location = locationDetails?.displayName?.split(',')?.[0] || 'n/a';
+    this.weather = weatherForecast ? this.buildWeatherString(weatherForecast.type) : 'n/a';
+    this.temperature = weatherForecast ? `${weatherForecast.temperature} ${weatherForecast.temperatureUnit}` : 'n/a';
+    this.humidity = weatherForecast ? `${weatherForecast.humidity} ${weatherForecast.humidityUnit}` : 'n/a';
+    this.windSpeed = weatherForecast ? `${weatherForecast.windSpeed} ${weatherForecast.windSpeedUnit}` : 'n/a';
   }
 
   private buildWeatherString(type: WeatherType): string {

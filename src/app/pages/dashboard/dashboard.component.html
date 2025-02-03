@@ -1,23 +1,25 @@
 <app-dashboard-header [loading]="isLoading"></app-dashboard-header>
-<div class="d-flex flex-column" *ngIf="weatherData">
-  <div>
-    <span>City: </span>
-    <span>{{weatherData.location}}</span>
-  </div>
-  <div>
-    <span>Weather Conditions: </span>
-    <span>{{weatherData.weather}}</span>
-  </div>
-  <div>
-    <span>Temperature: </span>
-    <span>{{weatherData.temperature}}</span>
-  </div>
-  <div>
-    <span>Humidity: </span>
-    <span>{{weatherData.humidity}}</span>
-  </div>
-  <div>
-    <span>Wind Speed: </span>
-    <span>{{weatherData.windSpeed}}</span>
+<div class="dashboard-content">
+  <div class="content-card mat-elevation-z6">
+    <div class="text-group">
+      <span class="label">City: </span>
+      <span>{{viewModel?.location}}</span>
+    </div>
+    <div class="text-group">
+      <span class="label">Weather Conditions: </span>
+      <span>{{viewModel?.weather}}</span>
+    </div>
+    <div class="text-group">
+      <span class="label">Temperature: </span>
+      <span>{{viewModel?.temperature}}</span>
+    </div>
+    <div class="text-group">
+      <span class="label">Humidity: </span>
+      <span>{{viewModel?.humidity}}</span>
+    </div>
+    <div class="text-group">
+      <span class="label">Wind Speed: </span>
+      <span>{{viewModel?.windSpeed}}</span>
+    </div>
   </div>
 </div>

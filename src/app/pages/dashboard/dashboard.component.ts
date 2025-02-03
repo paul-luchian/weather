@@ -18,6 +18,7 @@ import {DashboardViewModel} from "./dashboard.models";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss',
   imports: [
     DashboardHeaderComponent,
     JsonPipe,
@@ -31,7 +32,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
   @ViewChild(DashboardHeaderComponent) dashboardHeader!: DashboardHeaderComponent;
 
   isLoading = false;
-  weatherData?: DashboardViewModel;
+  viewModel?: DashboardViewModel = new DashboardViewModel();
 
   readonly #cdr = inject(ChangeDetectorRef);
   readonly #notificationService = inject(NotificationService);
@@ -44,8 +45,16 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       .pipe(
         filter((e) => e.keyCode === 13)
       );
-    const searchEvent =  this.dashboardHeader.searchCtrl.valueChanges.pipe(
+    const searchEvent = this.dashboardHeader.searchCtrl.valueChanges.pipe(
       debounceTime(1000),
+      filter((searchString) => {
+        if (!searchString.trim()) {
+          this.viewModel = new DashboardViewModel();
+          this.isLoading = false;
+          this.#cdr.markForCheck();
+        }
+        return !!searchString.trim();
+      })
     );
     merge(
       searchEnterEvent,
@@ -73,7 +82,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
           this.#weatherService.getForecast(locationDetails!.latitude, locationDetails!.longitude)
             .pipe(
               tap((weatherForecast) => {
-                this.weatherData = new DashboardViewModel(locationDetails!, weatherForecast);
+                this.viewModel = new DashboardViewModel(locationDetails!, weatherForecast);
               })
             )
         ),

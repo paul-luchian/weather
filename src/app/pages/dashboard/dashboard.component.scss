@@ -1,0 +1,37 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .dashboard-content {
+    flex-grow: 1;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+
+    .content-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      width: 30rem;
+      height: 30rem;
+      border-radius: 20px;
+      opacity: 0.5;
+      background-color: #ffffff;
+      font-size: 1rem;
+      padding: 2rem;
+
+      .text-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .label {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
